@@ -1,0 +1,18 @@
+.loop-columns(
+@_prefix-class,
+@_infix-class,
+@_column-count,
+@_ruleset,
+@_current-column: 1) when (@_current-column =< @_column-count) {
+
+    .@{_prefix-class}-@{_infix-class}-@{_current-column} {
+        @_ruleset();
+    }
+
+    .loop-columns(
+    @_prefix-class,
+    @_infix-class,
+    @_column-count,
+    @_ruleset,
+    @_current-column + 1);
+}

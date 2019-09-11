@@ -1,0 +1,29 @@
+.make-offsets(@_breakpoint-index, @_breakpoint-namespace) {
+    @_current-column-count: extract(@grid-columns, @_breakpoint-index);
+    @_last-column-count: extract(@grid-columns, length(@grid-columns));
+
+    & when (isnumber(@_current-column-count)) {
+        .loop-columns(
+        @grid-class-offset,
+        @_breakpoint-namespace,
+        @_current-column-count,
+        {
+            & when (@_current-column < @_current-column-count) {
+                .styles(margin-left, percentage(@_current-column / @_current-column-count));
+            }
+        }
+        );
+    }
+
+    & when not (isnumber(@_current-column-count)) {
+        .loop-columns(
+        @grid-class-offset,
+        @_breakpoint-namespace,
+        @_last-column-count,
+        {
+            & when (@_current-column < @_last-column-count) {
+                .styles(margin-left, percentage(@_current-column / @_last-column-count));
+            }
+        });
+    }
+}

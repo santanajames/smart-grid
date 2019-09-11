@@ -1,0 +1,17 @@
+// Container
+// Create container class for holding site content
+.container-base {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+// Columns
+// Create columns
+.col-base {
+    .styles(padding-right, (extract(@grid-gutters, 1) / 2), false, false);
+    .styles(padding-left, (extract(@grid-gutters, 1) / 2), false, false);
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+}

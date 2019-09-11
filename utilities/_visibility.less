@@ -1,0 +1,13 @@
+.make-visibility-classes(@_breakpoint-namespace, @_mobile-first: true) {
+    & when (@_mobile-first = true) {
+        .hidden-@{_breakpoint-namespace} {
+            display: none !important;
+        }
+    }
+
+    & when not (@_mobile-first = true) {
+        .hidden-@{_breakpoint-namespace}-down {
+            display: none !important;
+        }
+    }
+}

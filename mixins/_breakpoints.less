@@ -1,0 +1,28 @@
+// --------------
+// Loop Breakpoints
+// --------------
+.breakpoints(@_ruleset, @_breakpoint-index: 1) when (@_breakpoint-index =< length(@grid-breakpoints)) {
+    @_breakpoint-item: extract(@grid-breakpoints, @_breakpoint-index);
+    @_breakpoint-namespace: extract(@_breakpoint-item, 1);
+    @_breakpoint-width: extract(@_breakpoint-item, 2);
+
+    // mobile first
+    & when (@_breakpoint-width = 0) {
+        .ruleset(@_ruleset);
+    }
+
+    // small viewports up
+    & when (@_breakpoint-width > 0) {
+        @media only screen and (min-width: @_breakpoint-width) {
+            .ruleset(@_ruleset);
+        }
+    }
+
+    // desktop down visibiltiy classes
+    @media only screen and (max-width: (@_breakpoint-width - 1)) {
+        .make-visibility-classes(@_breakpoint-namespace, false);
+    }
+
+    // go to next instance
+    .breakpoints(@_ruleset, @_breakpoint-index + 1);
+}

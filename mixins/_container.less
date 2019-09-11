@@ -1,0 +1,33 @@
+
+.make-container(@_breakpoint-index, @_breakpoint-namespace) {
+    @_current-width: extract(@grid-widths, @_breakpoint-index);
+    @_last-width: extract(@grid-widths, length(@grid-widths));
+    @_current-margin: extract(@grid-margins, @_breakpoint-index);
+    @_last-margin: extract(@grid-margins, length(@grid-margins));
+
+    .@{grid-class-container} {
+        & when (@_breakpoint-index = 1) {
+            width: 100%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        & when (isnumber(@_current-width)) {
+            .styles(max-width, @_current-width, false, false);
+        }
+
+        & when not (isnumber(@_current-width)) {
+            .styles(max-width, flase, @_last-width, false);
+        }
+
+        & when (isnumber(@_current-margin)) {
+            .styles(padding-right, (@_current-margin / 2), false, false);
+            .styles(padding-left, (@_current-margin / 2), false, false);
+        }
+
+        & when not (isnumber(@_current-margin)) {
+            .styles(padding-right, flase, (@_last-margin / 2), false);
+            .styles(padding-left, flase, (@_last-margin / 2), false);
+        }
+    }
+}

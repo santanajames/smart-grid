@@ -1,0 +1,42 @@
+.make-columns(@_breakpoint-index, @_breakpoint-namespace) {
+    @_current-gutter: extract(@grid-gutters, @_breakpoint-index);
+    @_last-gutter: extract(@grid-gutters, length(@grid-gutters));
+    @_current-column-count: extract(@grid-columns, @_breakpoint-index);
+    @_last-column-count: extract(@grid-columns, length(@grid-columns));
+
+    & when (isnumber(@_current-column-count)) {
+        .loop-columns(@grid-class-col, @_breakpoint-namespace, @_current-column-count, {
+            .styles(
+            flex-basis,
+            percentage(@_current-column / @_column-count),
+            percentage(@_current-column / @_last-column-count),
+            true
+            );
+
+            .styles(
+            max-width,
+            percentage(@_current-column / @_column-count),
+            percentage(@_current-column / @_last-column-count),
+            true
+            );
+        });
+    }
+
+    & when not (isnumber(@_current-column-count)) {
+        .loop-columns(@grid-class-col, @_breakpoint-namespace, @_last-column-count, {
+            .styles(
+            flex-basis,
+            percentage(@_current-column / @_column-count),
+            percentage(@_current-column / @_last-column-count),
+            true
+            );
+
+            .styles(
+            max-width,
+            percentage(@_current-column / @_column-count),
+            percentage(@_current-column / @_last-column-count),
+            true
+            );
+        });
+    }
+}

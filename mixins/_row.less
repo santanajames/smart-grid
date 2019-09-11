@@ -1,0 +1,21 @@
+.make-row(@_breakpoint-index, @_breakpoint-namespace) {
+    @_current-gutter: extract(@grid-gutters, @_breakpoint-index);
+    @_last-gutter: extract(@grid-gutters, length(@grid-gutters));
+
+    .@{grid-class-row} {
+        & when (@_breakpoint-index = 1) {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        // need to check isnumber to be able to do math operations
+        & when (isnumber(@_current-gutter)) {
+            .styles(margin-right, -(@_current-gutter / 2), false, false);
+            .styles(margin-left, -(@_current-gutter / 2), false, false);
+        }
+        & when not (isnumber(@_current-gutter)) {
+            .styles(margin-right, false, -(@_last-gutter / 2), false);
+            .styles(margin-left, false, -(@_last-gutter / 2), false);
+        }
+    }
+}

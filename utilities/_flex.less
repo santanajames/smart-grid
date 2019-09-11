@@ -1,0 +1,99 @@
+.make-flex-utils(@_breakpoint-index, @_breakpoint-namespace) {
+    & when (@_breakpoint-index = 1) {
+        .flex {
+            // display: -webkit-box;
+            // display: -ms-flexbox;
+            display: flex;
+        }
+    }
+    .flex--@{_breakpoint-namespace}-justify-start {
+        // -webkit-box-pack: start;
+        // -ms-flex-pack: start;
+        justify-content: flex-start;
+    }
+    .flex--@{_breakpoint-namespace}-justify-end {
+        // -webkit-box-pack: end;
+        // -ms-flex-pack: end;
+        justify-content: flex-end;
+    }
+    .flex--@{_breakpoint-namespace}-justify-center {
+        // -webkit-box-pack: center;
+        // -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .flex--@{_breakpoint-namespace}-justify-between {
+        // -webkit-box-pack: justify;
+        // -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+    .flex--@{_breakpoint-namespace}-justify-around {
+        // -ms-flex-pack: distribute;
+        justify-content: space-around;
+    }
+    .flex--@{_breakpoint-namespace}-align-start {
+        // -webkit-box-align: start;
+        // -ms-flex-align: start;
+        align-items: flex-start;
+    }
+    .flex--@{_breakpoint-namespace}-align-end {
+        // -webkit-box-align: end;
+        // -ms-flex-align: end;
+        align-items: flex-end;
+    }
+    .flex--@{_breakpoint-namespace}-align-center {
+        // -webkit-box-align: center;
+        // -ms-flex-align: center;
+        align-items: center;
+    }
+    .flex--@{_breakpoint-namespace}-align-baseline {
+        // -webkit-box-align: baseline;
+        // -ms-flex-align: baseline;
+        align-items: baseline;
+    }
+    .flex--@{_breakpoint-namespace}-align-stretch {
+        // -webkit-box-align: stretch;
+        // -ms-flex-align: stretch;
+        align-items: stretch;
+    }
+    .flex--@{_breakpoint-namespace}-nowrap {
+        // -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+    .flex--@{_breakpoint-namespace}-wrap {
+        // -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+    .flex--@{_breakpoint-namespace}-direction-row {
+        // -webkit-box-orient: horizontal;
+        // -webkit-box-direction: normal;
+        // -ms-flex-direction: row;
+        flex-direction: row;
+    }
+    .flex--@{_breakpoint-namespace}-direction-row-rev {
+        // -webkit-box-orient: horizontal;
+        // -webkit-box-direction: reverse;
+        // -ms-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+    }
+    .flex--@{_breakpoint-namespace}-direction-col {
+        // -webkit-box-orient: vertical;
+        // -webkit-box-direction: normal;
+        // -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .flex--@{_breakpoint-namespace}-direction-col-rev {
+        // -webkit-box-orient: vertical;
+        // -webkit-box-direction: reverse;
+        // -ms-flex-direction: column-reverse;
+        flex-direction: column-reverse;
+    }
+    .flex--@{_breakpoint-namespace}-grow {
+        // -webkit-box-flex: 1;
+        // -ms-flex-positive: 1;
+        flex-grow: 1;
+    }
+    .flex--@{_breakpoint-namespace}-noshrink {
+        // -ms-flex-negative: 0;
+        flex-shrink: 0;
+    }
+}

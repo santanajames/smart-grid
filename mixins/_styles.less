@@ -1,0 +1,20 @@
+
+// If @_use-all-breakppoints is set to false,
+// the styles will only output if there is a valid value passed
+// Otherwise, ignore the last valid value in the list.
+.styles(
+@_prop,
+@_value,
+@_alt-value: false,
+@_use-all-breakppoints: true) {
+
+    & when (isnumber(@_value)) {
+        @{_prop}: @_value;
+        @{_prop}: @_value;
+    }
+
+    & when not(isnumber(@_value)) and (@_use-all-breakppoints = true) {
+        @{_prop}: @_alt-value;
+        @{_prop}: @_alt-value;
+    }
+}
